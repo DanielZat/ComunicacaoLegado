@@ -1,0 +1,34 @@
+logging:
+  level:
+    root: INFO
+    com.boasaude: INFO
+    io.netty.util.internal: INFO
+
+server:
+  port: 9998
+
+spring:
+  cloud:
+    stream:
+      binders:
+        addressQueue:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                addresses: rabbitmq-data-store-rabbitmq-ha.data-store.svc.cluster.local.:5672/dev2
+      bindings:
+        queue-order-status-change-input:
+          destination: queue-order-status-change
+          content-type: application/json
+          group: internalOrderPromotionsUpdate
+          binder: addressQueue
+          consumer:
+            concurrency: 50
+        gpa-basket-closed-input:
+          destination: gpa-basket-closed
+          content-type: text/plain
+          group: internalOrderPromotionsUpdateEcomLocal
+          binder: addressQueue
+          consumer:
+            concurrency: 50
