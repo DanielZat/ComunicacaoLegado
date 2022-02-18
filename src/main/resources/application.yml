@@ -16,7 +16,7 @@ spring:
           environment:
             spring:
               rabbitmq:
-                addresses: localhost:5672
+                addresses: rabbit:5672
       bindings:
         solicitar-impressao-carteira-event:
           destination: solicitar-impressao-carteira-event
