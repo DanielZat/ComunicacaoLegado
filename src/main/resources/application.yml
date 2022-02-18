@@ -16,19 +16,19 @@ spring:
           environment:
             spring:
               rabbitmq:
-                addresses: rabbitmq-data-store-rabbitmq-ha.data-store.svc.cluster.local.:5672/dev2
+                addresses: localhost:5672
       bindings:
-        queue-order-status-change-input:
-          destination: queue-order-status-change
+        solicitar-impressao-carteira-event:
+          destination: solicitar-impressao-carteira-event
           content-type: application/json
-          group: internalOrderPromotionsUpdate
+          group: solicitarImpressao
           binder: addressQueue
           consumer:
             concurrency: 50
-        gpa-basket-closed-input:
-          destination: gpa-basket-closed
+        solicitar-cobranca-segunda-via-carteira-event:
+          destination: solicitar-cobranca-segunda-via-carteira-event
           content-type: text/plain
-          group: internalOrderPromotionsUpdateEcomLocal
+          group: solicitarCobranca
           binder: addressQueue
           consumer:
             concurrency: 50
