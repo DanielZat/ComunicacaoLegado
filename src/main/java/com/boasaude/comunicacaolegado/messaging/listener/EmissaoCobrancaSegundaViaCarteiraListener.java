@@ -1,11 +1,13 @@
 package com.boasaude.comunicacaolegado.messaging.listener;
 
-import com.boasaude.comunicacaolegado.messaging.rabbitbinding.RabbitBinding;
-import com.boasaude.comunicacaolegado.service.CarteiraService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Component;
+
+import com.boasaude.comunicacaolegado.messaging.rabbitbinding.RabbitBinding;
+import com.boasaude.comunicacaolegado.service.CarteiraService;
 
 @Component
 @RequiredArgsConstructor
